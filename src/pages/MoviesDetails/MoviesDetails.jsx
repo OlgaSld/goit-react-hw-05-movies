@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, Suspense } from 'react';
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieId } from 'api';
 import BackLink from 'components/BackLink/BackLink';
 import {
