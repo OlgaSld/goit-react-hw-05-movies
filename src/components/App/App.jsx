@@ -8,14 +8,16 @@ import SharedLayout from 'components/SharedLayout/SharedLayout';
 
 export const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MoviesDetails />} />
-        {/* <Route path="reviews" element={<Reviews />} />
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:movieId" element={<MoviesDetails />} />
+          {/* <Route path="reviews" element={<Reviews />} />
         <Route path="cast" element={<Cast />} /> */}
-      </Route>
-    </Routes>
+        </Route>
+      </Routes>
+    </>
   );
 };

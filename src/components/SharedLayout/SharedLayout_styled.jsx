@@ -10,8 +10,6 @@ export const NavItem = styled.nav`
   gap: 20px;
   font-size: 24px;
   font-weight: 700;
-  padding-top: 50px;
-  padding-bottom: 50px;
   margin-left: 50px;
 `;
 
@@ -22,4 +20,10 @@ export const Link = styled(NavLink)`
   &.active {
     color: red;
   }
+`;
+
+export const Header = styled.header`
+  border-bottom: 1px solid grey;
+  padding-top: 30px;
+  padding-bottom: 30px;
 `;

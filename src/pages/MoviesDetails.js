@@ -26,11 +26,20 @@ const MoviesDetails = () => {
 
   return (
     <div>
-      <img
-        src={movies.poster_path ? baseUrl + movies.poster_path : defaultImg}
-        alt={movies.title}
-        width={250}
-      />
+      {movies.poster_path ? (
+        <img
+          src={baseUrl + movies.poster_path}
+          alt={movies.title}
+          width={250}
+        ></img>
+      ) : (
+        <img src={defaultImg} alt={movies.title} width={250}></img>
+      )}
+      <div>
+        <h2>{movies.title}</h2>
+        <p>User Score: {movies.popularity}</p>
+        <h3>Overview: {movies.overview}</h3>
+      </div>
     </div>
   );
 };

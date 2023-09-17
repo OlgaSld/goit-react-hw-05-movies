@@ -10,17 +10,17 @@ export const getTrendingDay = async () => {
 };
 
 export const getMovieQuery = async query => {
-  const resp = await axios.get(
+  const { data } = await axios.get(
     `search/movie?api_key=${API_KEY}&query=${query}&include_adult=false&language=en-US&page=1`
   );
-  return resp.data;
+  return data.results;
 };
 
 export const getMovieId = async movieId => {
   const { data } = await axios.get(
     `search/movie/${movieId}?api_key=${API_KEY}&language=en-US`
   );
-  return data;
+  return data.results;
 };
 
 export const getMovieCast = async movieId => {

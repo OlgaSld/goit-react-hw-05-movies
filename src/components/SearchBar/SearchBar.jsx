@@ -7,7 +7,7 @@ import {
 } from './SearchBar_styled';
 import { HiSearch } from 'react-icons/hi';
 
-export const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
   const handlerRequest = evt => {
@@ -39,3 +39,5 @@ export const SearchBar = ({ onSubmit }) => {
     </SearchForm>
   );
 };
+
+export default SearchBar;
