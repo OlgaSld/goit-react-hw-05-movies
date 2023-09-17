@@ -1,4 +1,5 @@
 import { getMovieQuery } from 'api';
+import MoviesList from 'components/MoviesList/MoviesList';
 import SearchBar from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -30,7 +31,7 @@ const Movies = () => {
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
-      <Movies movies={movies} />
+      <MoviesList movies={movies} />
     </>
   );
 };

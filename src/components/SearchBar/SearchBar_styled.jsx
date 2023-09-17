@@ -39,7 +39,7 @@ export const SearchFormButtonLabel = styled.label`
 
 export const SearchFormInput = styled.input`
   display: inline-block;
-  width: 100%;
+  width: 300px;
   font: inherit;
   font-size: 20px;
   border: none;

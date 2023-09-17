@@ -25,17 +25,17 @@ const SearchBar = ({ onSubmit }) => {
 
   return (
     <SearchForm onSubmit={handlerRequest}>
-      <SearchFormButton type="submit">
-        <SearchFormButtonLabel>
-          <HiSearch style={{ width: 20, height: 20 }} />
-        </SearchFormButtonLabel>
-      </SearchFormButton>
       <SearchFormInput
         type="text"
         placeholder="Search movies"
         value={query}
         onChange={handleChange}
       />
+      <SearchFormButton type="submit">
+        <SearchFormButtonLabel>
+          <HiSearch style={{ width: 20, height: 20 }} />
+        </SearchFormButtonLabel>
+      </SearchFormButton>
     </SearchForm>
   );
 };

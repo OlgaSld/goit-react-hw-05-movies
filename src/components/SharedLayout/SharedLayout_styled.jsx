@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: block;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 export const NavItem = styled.nav`

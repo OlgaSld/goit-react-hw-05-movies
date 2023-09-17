@@ -15,4 +15,5 @@ export const Link = styled(NavLink)`
   flex-direction: column;
   text-decoration: none;
   font-weight: 400;
+  cursor: pointer;
 `;
