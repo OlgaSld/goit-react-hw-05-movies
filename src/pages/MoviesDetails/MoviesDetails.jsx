@@ -11,7 +11,7 @@ import {
 
 const MoviesDetails = () => {
   const { movieId } = useParams();
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(null);
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
 
@@ -33,23 +33,21 @@ const MoviesDetails = () => {
     getMoviesInfo();
   }, [movieId]);
 
+  if (!movies) return;
+
   return (
     <>
       <BackLink to={backLinkLocationRef.current}>Go Back</BackLink>
 
       <Container>
-        {movies.poster_path ? (
-          <img
-            src={baseUrl + movies.poster_path}
-            alt={movies.title}
-            width={250}
-          ></img>
-        ) : (
-          <img src={defaultImg} alt={movies.title} width={250}></img>
-        )}
+        <img
+          src={movies.poster_path ? baseUrl + movies.poster_path : defaultImg}
+          alt={movies.title}
+          width={250}
+        />
         <div>
           <h2>{movies.title}</h2>
-          <p>User Score: {movies.popularity}</p>
+          <p>User Score: {movies.vote_average}%</p>
           <h3>Overview:</h3>
           <p>{movies.overview}</p>
           <h3>Genres</h3>

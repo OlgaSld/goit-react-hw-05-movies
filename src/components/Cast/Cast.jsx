@@ -29,15 +29,11 @@ const Cast = () => {
     <>
       {cast.map(({ id, profile_path, original_name, character }) => (
         <Castitem key={id}>
-          {profile_path ? (
-            <img
-              src={baseUrl + profile_path}
-              alt={original_name}
-              width={250}
-            ></img>
-          ) : (
-            <img src={defaultImg} alt={original_name} width={250}></img>
-          )}
+          <img
+            src={profile_path ? baseUrl + profile_path : defaultImg}
+            alt={original_name}
+            width={250}
+          />
           <div>
             <h2>{original_name}</h2>
             <h3>

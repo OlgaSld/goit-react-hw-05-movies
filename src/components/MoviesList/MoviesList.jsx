@@ -3,7 +3,6 @@ import { Link, MovieItem, MovieList } from './MoviesList_styled';
 
 const MoviesList = ({ movies }) => {
   const location = useLocation();
-  console.log(movies);
   return (
     <MovieList>
       {movies.map(({ id, original_title }) => {
