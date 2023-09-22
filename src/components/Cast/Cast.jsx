@@ -12,17 +12,27 @@ const Cast = () => {
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
+    const controller = new AbortController();
+
     if (!movieId) return;
 
     async function getMoviesCast() {
       try {
-        const movieCast = await getMovieCast(movieId);
+        const movieCast = await getMovieCast(movieId, {
+          signal: controller.signal,
+        });
         setCast(movieCast);
       } catch (error) {
-        console.error(error);
+        if (error.code !== 'ERR_CANCELED') {
+          console.error(error);
+        }
       }
     }
     getMoviesCast();
+
+    return () => {
+      controller.abort();
+    };
   }, [movieId]);
 
   return (

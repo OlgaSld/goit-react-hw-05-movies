@@ -20,17 +20,27 @@ const MoviesDetails = () => {
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
+    const controller = new AbortController();
+
     if (!movieId) return;
 
     async function getMoviesInfo() {
       try {
-        const movieById = await getMovieId(movieId);
+        const movieById = await getMovieId(movieId, {
+          signal: controller.signal,
+        });
         setMovies(movieById);
       } catch (error) {
-        console.error(error);
+        if (error.code !== 'ERR_CANCELED') {
+          console.error(error);
+        }
       }
     }
     getMoviesInfo();
+
+    return () => {
+      controller.abort();
+    };
   }, [movieId]);
 
   if (!movies) return;

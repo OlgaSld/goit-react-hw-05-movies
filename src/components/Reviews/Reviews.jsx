@@ -8,15 +8,25 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function getMoviesReviews() {
       try {
-        const movieReview = await getMovieReviews(movieId);
+        const movieReview = await getMovieReviews(movieId, {
+          signal: controller.signal,
+        });
         setReviews(movieReview);
       } catch (error) {
-        console.error(error);
+        if (error.code !== 'ERR_CANCELED') {
+          console.error(error);
+        }
       }
     }
     getMoviesReviews();
+
+    return () => {
+      controller.abort();
+    };
   }, [movieId]);
 
   return reviews.length === 0 ? (

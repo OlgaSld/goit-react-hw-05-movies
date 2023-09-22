@@ -10,18 +10,30 @@ const Movies = () => {
   const query = searchParams.get('query');
 
   useEffect(() => {
+    const controller = new AbortController();
+
     if (!query) {
       return;
     }
     async function getMovies() {
       try {
-        const movieQuery = await getMovieQuery(query);
+        const movieQuery = await getMovieQuery(query, {
+          signal: controller.signal,
+        });
+
+        console.log(movieQuery);
         setMovies(movieQuery);
       } catch (error) {
-        console.error(error);
+        if (error.code !== 'ERR_CANCELED') {
+          console.error(error);
+        }
       }
     }
     getMovies();
+
+    return () => {
+      controller.abort();
+    };
   }, [query]);
 
   const handleSubmit = query => {

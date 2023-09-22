@@ -6,16 +6,26 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function getMoviesList() {
       try {
-        const moviesList = await getTrendingDay();
+        const moviesList = await getTrendingDay({
+          signal: controller.signal,
+        });
         setMovies(moviesList);
       } catch (error) {
-        console.error(error);
+        if (error.code !== 'ERR_CANCELED') {
+          console.error(error);
+        }
       }
     }
 
     getMoviesList();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
